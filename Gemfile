@@ -2,7 +2,10 @@ ruby '2.2.3'
 #ruby-gemset=tealchest_stripe
 source 'https://rubygems.org'
 
-
+#Scaffold styles, variables and structure for Bourbon projects
+gem 'bitters'
+#lightweight Sass mixin
+gem 'bourbon'
 # Authorization gem:  gives us Ability model and can? :edit, item
 gem 'cancan'
 # Coffeescript
