@@ -24,8 +24,6 @@ gem 'figaro'
 gem 'fog'
 # Enables HAML views
 gem 'haml-rails'
-# Error reporting
-gem 'honeybadger'
 # jquery on rails:
 gem 'jquery-rails'
 # jquery-ui on rails:
