@@ -22,6 +22,8 @@ gem 'fabrication'
 gem 'figaro'
 # Stores files in the cloud
 gem 'fog'
+# Stripe for e-commerce payments processing
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 # Enables HAML views
 gem 'haml-rails'
 # jquery on rails:
