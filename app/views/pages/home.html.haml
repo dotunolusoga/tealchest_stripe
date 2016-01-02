@@ -1,17 +1,24 @@
 
-TEALCHEST
-
-%a
-  %span I want this
-= form_tag charges_path do
-  %article
-  - if flash[:error].present?
-    #error_explanation
-      %p= flash[:error]
-    %label.amount
-      %span Amount: $5.00
-  %script.stripe-button{"data-amount" => "500",
-  "data-description" => "A month's subscription",
-  "data-key" => Rails.configuration.stripe[:publishable_key],
-  "data-locale" => "auto",
-  :src => "https://checkout.stripe.com/checkout.js"}
+= form_tag charges_path, id: 'chargeForm' do
+  %script{:src => "https://checkout.stripe.com/checkout.js"}
+  = hidden_field_tag 'stripeToken'
+  = hidden_field_tag 'stripeEmail'
+  %button#btn-buy{:type => "button"}
+    %span I want this!
+  :javascript
+    var handler = StripeCheckout.configure({
+      key:'#{Rails.configuration.stripe[:publishable_key]}',
+      token: function(token, arg) {
+        document.getElementById("stripeToken").value = token.id;
+        document.getElementById("stripeEmail").value = token.email;
+        document.getElementById("chargeForm").submit();
+      }
+    });
+     document.getElementById('btn-buy').addEventListener('click', function(e) {
+      handler.open({
+        name: 'One Month',
+        description: 'Growth Hacking Crash Course ($4.99)',
+        amount: 499
+    });
+    e.preventDefault();
+    })
