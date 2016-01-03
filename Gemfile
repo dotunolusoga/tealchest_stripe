@@ -54,6 +54,8 @@ end
 group :development do
   # Creates viewable ERD
   gem 'rails-erd'
+  # For handling emails in development
+  gem 'letter_opener'
 end
 
 group :test, :development do
